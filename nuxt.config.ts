@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
+  ssr: false,
   app: {
     head: {
       htmlAttrs: { lang: 'ru' },
@@ -64,7 +65,37 @@ export default defineNuxtConfig({
     "builder:watch": console.log
   },
   typescript: {
-    typeCheck: true,
+    typeCheck: false,
     strict: false
+  },
+  router: {
+    base: '/audit/',
+    mode: 'history',
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'error',
+        path: '*',
+        component: resolve(__dirname, 'app.vue'),
+      })
+    },
+  },
+  generate: {
+    dir: './dist',
+  },
+  build: {
+    target: 'static',
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+        },
+      })
+      config.module.rules.push({
+        test: /\.(glsl|vs|fs|vert|frag)$/,
+        loader: 'raw-loader',
+      })
+    },
   },
 })
