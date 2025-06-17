@@ -3,7 +3,7 @@ import { useWindowScroll } from '@vueuse/core'
 
 useHead({
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} | web-Audit` : 'web-Audit: крупнейший web-аудит цент Москвы.';
+    return titleChunk ? `${titleChunk} | MG Audit` : 'MG Audit: крупнейший аудит цент для web-России.';
   }
 })
 
@@ -15,10 +15,10 @@ const modal = ref<boolean>(false)
 <template>
   <main class="pt-16">
     <Header />
-    <NuxtImg
+    <img
       class="fixed left-0 w-full h-auto -z-10 brightness-50"
       src="/img/bg-main.jpg"
-      :style="{ top: y * -.5 + 'px' }" />
+      :style="{ top: y * -.5 + 'px' }" >
     <Banner />
     <Services />
     <Advantages />

@@ -7,7 +7,10 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'ru' },
       link: [
-        { rel: "icon", href: "/favicon.ico", sizes: "any" }
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
       ],
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no',
@@ -15,6 +18,8 @@ export default defineNuxtConfig({
         { name: 'description', content: '' },
         { name: 'keywords', content: '' },
         { name: 'color-scheme', content: 'only light' },
+        { name: 'theme-color', content: '#1E3A8A' },
+        { name: 'msapplication-TileColor', content: '#1E3A8A' }
       ],
       script: [],
     },
@@ -33,7 +38,6 @@ export default defineNuxtConfig({
     }],
   ],
   image: {
-    provider: 'static',
     quality: 80,
     format: ['webp'],
     screens: {
@@ -71,7 +75,7 @@ export default defineNuxtConfig({
     typeCheck: false,
     strict: false
   },
-  nitro: {
-    preset: 'static'
-  },
+  // nitro: {
+  //   preset: 'static'
+  // },
 })

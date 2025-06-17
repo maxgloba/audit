@@ -1,37 +1,5 @@
 <script setup lang="ts">
-interface IAdvantage {
-  title: string
-  text: string
-}
-
 const { setModal } = useGlobalStore()
-
-const items = ref<IAdvantage[]>([
-  {
-    title: 'Постоянная поддержка клиентов',
-    text: 'Обеспечиваем сопровождение и техническую поддержку после завершения проекта, гарантируя долгосрочное сотрудничество.'
-  },
-  {
-    title: 'Прозрачное ценообразование',
-    text: 'Предоставляем четкие и понятные сметы без скрытых доплат, что позволяет клиентам планировать бюджет с максимальной уверенностью.'
-  },
-  {
-    title: 'Использование современных инструментов',
-    text: 'Применяем актуальные технологии и софт, что позволяет создавать инновационные и эффективные решения.'
-  },
-  {
-    title: 'Гарантия качества',
-    text: 'Мы тщательно контролируем каждый этап работы, обеспечивая высокое качество и надежность конечного результата.'
-  },
-  { 
-    title: 'Быстрые сроки выполнения',
-    text: 'Оптимизация процессов и профессиональная команда позволяют нам сдавать проекты в кратчайшие сроки без потери качества.'
-  },
-  {
-    title: 'Индивидуальный подход',
-    text: 'Мы внимательно изучаем потребности каждого клиента, чтобы предложить решения, максимально соответствующие его задачам и ожиданиям.'
-  },
-])
 </script>
 
 <template>
@@ -39,19 +7,46 @@ const items = ref<IAdvantage[]>([
     <div class="container">
       <h2 class="text-4xl text-center font-black font-serif mb-12">Наши преимущества</h2>
       <div class="grid grid-cols-2 gap-4">
-        <div
-          v-for="(item, index) in items"
-          :key="'advatages' + index"
-          class="relative flex gap-4 px-4 py-12 rounded-md"
-          :class="{
-            'bg-yellow-50': (index + 1) % 3 === 1,
-            'bg-emerald-50': (index + 1) % 3 === 2,
-            'bg-sky-50': (index + 1) % 3 === 0,
-          }">
-          <NuxtImg :src="`/img/a${index + 1}.png`" />
+        <div class="relative flex gap-4 px-4 py-12 rounded-md bg-yellow-50">
+          <img src="/img/a1.png" class="w-24 h-auto">
           <div>
-            <h3 class="text-xl font-serif font-bold">{{ item.title }}</h3>
-            <p>{{ item.text }}</p>
+            <h3 class="text-xl font-serif font-bold">Постоянная поддержка клиентов</h3>
+            <p>Обеспечиваем сопровождение и техническую поддержку после завершения проекта, гарантируя долгосрочное сотрудничество.</p>
+          </div>
+        </div>
+        <div class="relative flex gap-4 px-4 py-12 rounded-md bg-emerald-50">
+          <img src="/img/a2.png" class="w-24 h-auto">
+          <div>
+            <h3 class="text-xl font-serif font-bold">Прозрачное ценообразование</h3>
+            <p>Предоставляем четкие и понятные сметы без скрытых доплат, что позволяет клиентам планировать бюджет с максимальной уверенностью.</p>
+          </div>
+        </div>
+        <div class="relative flex gap-4 px-4 py-12 rounded-md bg-sky-50">
+          <img src="/img/a3.png" class="w-24 h-auto">
+          <div>
+            <h3 class="text-xl font-serif font-bold">Использование современных инструментов</h3>
+            <p>Применяем актуальные технологии и софт, что позволяет создавать инновационные и эффективные решения.</p>
+          </div>
+        </div>
+        <div class="relative flex gap-4 px-4 py-12 rounded-md bg-yellow-50">
+          <img src="/img/a4.png" class="w-24 h-auto">
+          <div>
+            <h3 class="text-xl font-serif font-bold">Гарантия качества</h3>
+            <p>Мы тщательно контролируем каждый этап работы, обеспечивая высокое качество и надежность конечного результата.</p>
+          </div>
+        </div>
+        <div class="relative flex gap-4 px-4 py-12 rounded-md bg-emerald-50">
+          <img src="/img/a5.png" class="w-24 h-auto">
+          <div>
+            <h3 class="text-xl font-serif font-bold">Быстрые сроки выполнения</h3>
+            <p>Оптимизация процессов и профессиональная команда позволяют нам сдавать проекты в кратчайшие сроки без потери качества.</p>
+          </div>
+        </div>
+        <div class="relative flex gap-4 px-4 py-12 rounded-md bg-sky-50">
+          <img src="/img/a6.png" class="w-24 h-auto">
+          <div>
+            <h3 class="text-xl font-serif font-bold">Индивидуальный подход</h3>
+            <p>Мы внимательно изучаем потребности каждого клиента, чтобы предложить решения, максимально соответствующие его задачам и ожиданиям.</p>
           </div>
         </div>
       </div>

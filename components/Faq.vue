@@ -63,7 +63,7 @@ function toggle(index) {
 </script>
 
 <template>
-  <div class="max-w-3xl mx-auto mt-10 mb-20 font-sans">
+  <div id="faq" class="max-w-3xl mx-auto mt-10 mb-20 font-sans">
     <h2 class="text-4xl text-center font-black font-serif mb-12">Вопросы и ответы</h2>
     <div
       v-for="(item, index) in faqData"
