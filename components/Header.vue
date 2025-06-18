@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { onClickOutside } from "@vueuse/core";
+
+const viewport = useViewport()
+
+const showMenu = ref<boolean>(false)
+
 const goTo = (id: string, offset: number) => {
   const element = document.getElementById(id)
   const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
@@ -8,11 +14,21 @@ const goTo = (id: string, offset: number) => {
     top: offsetPosition,
     behavior: 'smooth'
   });
+
+  showMenu.value = false
 }
+
+const header = ref(null)
+
+onClickOutside(header, () => {
+  setTimeout(() => {
+    showMenu.value = false
+  }, 150)
+})
 </script>
 
 <template>
-  <header class="fixed z-20 top-0 w-full bg-blue-900 text-white">
+  <header ref="header" class="fixed z-20 top-0 w-full bg-blue-900 text-white mdMax:min-h-16 mdMax:py-2">
     <div class="container flex justify-between items-center">
       <svg class="h-12 w-auto" width="683" height="690" viewBox="0 0 683 690" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M660 161.8V215.8L340 415.8L20 215.9V161.9L340 361.9L660 161.8ZM465.5 233.8L512.6 204.4C475.4 148.6 411.9 111.8 339.9 111.8C267.9 111.8 204.4 148.5 167.3 204.2H167.6C170.1 201.9 172.7 199.7 175.3 197.5C265 123.1 394.7 139.4 465.5 233.8ZM245.4 252.6C262.3 240.7 281.9 233.9 302.8 233.9C337.2 233.9 368 252.3 389.2 281.5L434.6 253.1C413.7 223.2 379 203.6 339.8 203.6C300.9 203.6 266.4 223 245.4 252.6ZM123.6 123C255.4 18.7 441.8 46.6 541.1 185.1L541.8 186.1L590.6 155.7C537.1 74 444.8 20 339.9 20C236.4 20 143.3 73.5 89.4 155.6C99.3 145.1 112.1 132.1 123.6 123Z" fill="white"/>
@@ -21,47 +37,56 @@ const goTo = (id: string, offset: number) => {
         <path d="M22.808 635V629.852L39.188 627.512H43.4L62.588 629.852V635H22.808ZM34.976 635L83.648 480.56H101.198L150.338 635H115.004L77.33 508.406H81.542L80.606 511.448L42.698 635H34.976ZM55.334 584.222V577.904H118.28V584.222H55.334ZM96.05 635V629.852L122.024 626.576H142.616L162.272 629.852V635H96.05ZM230.233 638.744C219.469 638.744 209.875 637.028 201.451 633.596C193.027 630.164 186.319 624.47 181.327 616.514C176.491 608.558 174.073 597.794 174.073 584.222V552.632C174.073 544.676 173.995 536.408 173.839 527.828C173.839 519.092 173.761 510.668 173.605 502.556C173.449 494.444 173.215 487.346 172.903 481.262H207.769C207.457 487.346 207.223 494.444 207.067 502.556C206.911 510.668 206.833 519.092 206.833 527.828C206.833 536.408 206.833 544.676 206.833 552.632V578.138C206.833 589.058 208.003 597.794 210.343 604.346C212.839 610.898 216.427 615.656 221.107 618.62C225.943 621.428 231.793 622.832 238.657 622.832C245.521 622.832 251.449 621.428 256.441 618.62C261.589 615.656 265.567 610.898 268.375 604.346C271.183 597.638 272.587 588.824 272.587 577.904V481.262H279.607V574.16C279.607 589.76 277.735 602.318 273.991 611.834C270.247 621.35 264.709 628.214 257.377 632.426C250.045 636.638 240.997 638.744 230.233 638.744ZM158.863 486.176V481.262H222.277V486.176L198.877 489.686H182.263L158.863 486.176ZM255.739 486.176V481.262H294.583V486.176L277.735 488.75H273.991L255.739 486.176ZM305.113 635V629.852L329.449 626.576H334.129V635H305.113ZM320.323 635C320.635 628.916 320.869 621.74 321.025 613.472C321.337 605.204 321.493 596.624 321.493 587.732C321.493 578.84 321.493 570.416 321.493 562.46V552.164C321.493 544.208 321.493 535.94 321.493 527.36C321.493 518.78 321.415 510.512 321.259 502.556C321.103 494.444 320.869 487.346 320.557 481.262H355.423C355.111 487.346 354.877 494.444 354.721 502.556C354.565 510.512 354.409 518.78 354.253 527.36C354.253 535.94 354.253 544.208 354.253 552.164V562.46C354.253 570.416 354.253 578.84 354.253 587.732C354.409 596.624 354.565 605.204 354.721 613.472C354.877 621.74 355.111 628.916 355.423 635H320.323ZM341.617 635V628.682H362.443C371.491 628.682 379.213 625.796 385.609 620.024C392.005 614.252 396.841 606.062 400.117 595.454C403.549 584.846 405.265 572.366 405.265 558.014C405.265 535.394 401.521 518 394.033 505.832C386.545 493.664 376.171 487.58 362.911 487.58H341.617V481.262H364.783C381.007 481.262 394.657 484.304 405.733 490.388C416.965 496.472 425.467 505.13 431.239 516.362C437.011 527.594 439.897 541.166 439.897 557.078C439.897 573.302 436.777 587.264 430.537 598.964C424.453 610.508 415.795 619.4 404.563 625.64C393.487 631.88 380.305 635 365.017 635H341.617ZM305.113 486.176V481.262H334.129V489.686H329.449L305.113 486.176ZM452.277 635V629.852L476.613 626.576H493.227L517.563 629.852V635H452.277ZM467.487 635C467.799 628.916 468.033 621.74 468.189 613.472C468.501 605.204 468.657 596.624 468.657 587.732C468.657 578.84 468.657 570.416 468.657 562.46V552.164C468.657 544.208 468.657 535.94 468.657 527.36C468.657 518.78 468.501 510.512 468.189 502.556C468.033 494.444 467.799 487.346 467.487 481.262H502.587C502.275 487.346 502.041 494.444 501.885 502.556C501.729 510.512 501.573 518.78 501.417 527.36C501.417 535.94 501.417 544.208 501.417 552.164V562.46C501.417 570.416 501.417 578.84 501.417 587.732C501.573 596.624 501.729 605.204 501.885 613.472C502.041 621.74 502.275 628.916 502.587 635H467.487ZM452.277 486.176V481.262H517.563V486.176L493.227 489.686H476.613L452.277 486.176ZM557.328 635V629.852L583.068 626.576H601.086L626.826 629.852V635H557.328ZM574.644 635C574.956 628.916 575.19 621.74 575.346 613.472C575.502 605.204 575.58 596.624 575.58 587.732C575.736 578.84 575.814 570.416 575.814 562.46V552.164C575.814 544.208 575.736 535.94 575.58 527.36C575.58 518.78 575.502 510.512 575.346 502.556C575.19 494.444 574.956 487.346 574.644 481.262H609.51C609.198 487.346 608.964 494.444 608.808 502.556C608.652 510.512 608.574 518.78 608.574 527.36C608.574 535.94 608.574 544.208 608.574 552.164V562.46C608.574 570.416 608.574 578.84 608.574 587.732C608.574 596.624 608.652 605.204 608.808 613.472C608.964 621.74 609.198 628.916 609.51 635H574.644ZM529.014 526.424L531.822 481.262H652.566L655.374 526.424H650.226L632.208 484.07L640.866 487.58H543.522L551.946 484.07L533.928 526.424H529.014Z" fill="white"/>
         <line x1="20" y1="450" x2="662" y2="450" stroke="white" stroke-width="16"/>
       </svg>
-      <nav class="flex items-center gap-4">
+
+      <button
+        type="button"
+        class="text-3xl sm:hidden"
+        @click="showMenu = !showMenu">
+        <font-awesome-icon v-if="viewport.isLessThan('md') && showMenu" :icon="['fas', 'xmark']" />
+        <font-awesome-icon v-else :icon="['fas', 'bars']" />
+      </button>
+
+      <nav class="navigation" :class="{'navigation__fixed': viewport.isLessThan('md') && showMenu}">
         <button
-          class="uppercase px-2 py-4 hover:bg-sky-600"
           type="button"
           @click="goTo('services', 0)">
           Услуги
         </button>
         <button
-          class="uppercase px-2 py-4 hover:bg-sky-600"
           type="button"
           @click="goTo('advatages', 100)">
           Преимущества
         </button>
         <button
-          class="uppercase px-2 py-4 hover:bg-sky-600"
           type="button"
           @click="goTo('testimonials', 0)">
           Отзывы
         </button>
         <button
-          class="uppercase px-2 py-4 hover:bg-sky-600"
           type="button"
           @click="goTo('faq', 100)">
           Есть вопросы?
         </button>
-        <a
-          class="text-2xl hover:text-sky-400"
-          href="https://vk.com/marugloba_pm"
-          target="_blank">
+
+        <div v-if="viewport.isLessThan('md')" class="flex gap-8 pb-12 pt-8">
+          <a href="https://vk.com/marugloba_pm" target="_blank">
+            <FontAwesomeIcon :icon="['fab', 'vk']" />
+          </a>
+          <a href="http://t.me/marugloba_pm" target="_blank">
+            <FontAwesomeIcon :icon="['fab', 'telegram']" />
+          </a>
+          <a href="mailto:marina.globa.1989@ya.ru" target="_blank">
+            <FontAwesomeIcon :icon="['fas', 'envelope']" />
+          </a>
+        </div>
+
+        <a v-if="viewport.isGreaterThan('md')" href="https://vk.com/marugloba_pm" target="_blank">
           <FontAwesomeIcon :icon="['fab', 'vk']" />
         </a>
-        <a
-          class="text-2xl hover:text-sky-400"
-          href="http://t.me/marugloba_pm"
-          target="_blank">
+        <a v-if="viewport.isGreaterThan('md')" href="http://t.me/marugloba_pm" target="_blank">
           <FontAwesomeIcon :icon="['fab', 'telegram']" />
         </a>
-        <a
-          class="text-2xl hover:text-sky-400"
-          href="mailto:marina.globa.1989@ya.ru"
-          target="_blank">
+        <a v-if="viewport.isGreaterThan('md')" href="mailto:marina.globa.1989@ya.ru" target="_blank">
           <FontAwesomeIcon :icon="['fas', 'envelope']" />
         </a>
       </nav>
@@ -69,4 +94,21 @@ const goTo = (id: string, offset: number) => {
   </header>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.navigation{
+  @apply flex items-center gap-4;
+  @media (max-width: 768px) {
+    @apply flex-col gap-6 fixed left-0 right-0 top-16 bg-blue-900;
+    @apply duration-500 max-h-0 overflow-hidden;
+    &__fixed{
+      @apply max-h-96 pt-4;
+    }
+  }
+  button{
+    @apply uppercase px-2 py-4 mdMax:py-2 hover:bg-sky-600;
+  }
+  a{
+    @apply text-2xl hover:text-sky-400 mdMax:text-3xl;
+  }
+}
+</style>

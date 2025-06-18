@@ -63,25 +63,25 @@ function toggle(index) {
 </script>
 
 <template>
-  <div id="faq" class="max-w-3xl mx-auto mt-10 mb-20 font-sans">
-    <h2 class="text-4xl text-center font-black font-serif mb-12">Вопросы и ответы</h2>
-    <div
-      v-for="(item, index) in faqData"
-      :key="index"
-      class="border-b border-gray-300 py-4 cursor-pointer select-none"
-      @click="toggle(index)"
-    >
-      <div class="flex justify-between items-center text-black">
-        <span class="text-xl font-semibold font-serif">{{ item.question }}</span>
-        <span class="text-2xl leading-none font-[Arial]">{{ openIndex === index ? '−' : '+' }}</span>
+  <section id="faq" class="pb-24 mdMax:pb-12">
+    <div class="container">
+      <h2 class="text-4xl text-center font-black font-serif mb-12 mdMax:mb-8">Вопросы и ответы</h2>
+      <div
+        v-for="(item, index) in faqData"
+        :key="index"
+        class="border-b border-gray-300 py-4 cursor-pointer select-none"
+        @click="toggle(index)"
+      >
+        <div class="flex justify-between items-center text-black">
+          <span class="text-xl mdMax:text-base font-semibold font-serif">{{ item.question }}</span>
+          <span class="text-2xl leading-none font-[Arial]">{{ openIndex === index ? '−' : '+' }}</span>
+        </div>
+        <p v-if="openIndex === index" class="mt-2 text-gray-700 text-sm leading-relaxed">
+          {{ item.answer }}
+        </p>
       </div>
-      <p v-if="openIndex === index" class="mt-2 text-gray-700 text-sm leading-relaxed">
-        {{ item.answer }}
-      </p>
     </div>
-  </div>
+  </section>
 </template>
 
-<style>
-/* TailwindCSS используется глобально, дополнительный CSS не требуется */
-</style>
+<style></style>

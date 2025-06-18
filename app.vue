@@ -16,15 +16,18 @@ const modal = ref<boolean>(false)
   <main class="pt-16">
     <Header />
     <img
-      class="fixed left-0 w-full h-auto -z-10 brightness-50"
+      class="fixed left-0 w-full h-auto -z-10 mdMax:hidden"
       src="/img/bg-main.jpg"
       :style="{ top: y * -.5 + 'px' }" >
-    <Banner />
-    <Services />
-    <Advantages />
+    <Banner @modal="modal = true" />
+    <Services @modal="modal = true" />
+    <Advantages @modal="modal = true" />
     <Testimonials />
     <Faq />
     <Footer />
+    <Modal v-if="modal" @close="modal = false">
+      <Form @modal="modal = false" />
+    </Modal>
   </main>
 </template>
 

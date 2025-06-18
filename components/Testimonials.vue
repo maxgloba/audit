@@ -1,12 +1,12 @@
 <script setup lang="ts"></script>
 
 <template>
-  <section id="testimonials" class="bg-white py-32">
+  <section id="testimonials" class="bg-white py-32 mdMax:py-16">
     <div class="container">
-      <h2 class="text-4xl text-center font-black font-serif mb-12">Отзывы наших клиентов</h2>
-      <div class="grid grid-cols-2 gap-4 gap-y-16">
+      <h2 class="text-4xl text-center font-black font-serif mb-12 mdMax:mb-8">Отзывы наших клиентов</h2>
+      <div class="grid grid-cols-2 mdMax:grid-cols-1 gap-4 gap-y-16 mdMax:gap-y-8">
         <div>
-          <img class="w-24 h-auto mb-4" src="/img/t1.png" >
+          <img class="w-24 h-auto mb-4 mdMax:mb-2" src="/img/t1.png" >
           <div>
             <h3 class="text-2xl text-sky-600 font-serif font-black">Алексей Иванов</h3>
             <p class="text-sm text-black/40 mb-2">ТехПро</p>
@@ -18,7 +18,7 @@
           </div>
         </div>
         <div>
-          <img class="w-24 h-auto mb-4" src="/img/t2.png" >
+          <img class="w-24 h-auto mb-4 mdMax:mb-2" src="/img/t2.png" >
           <div>
             <h3 class="text-2xl text-sky-600 font-serif font-black">Екатерина Смирнова</h3>
             <p class="text-sm text-black/40 mb-2">ИнноваСистем</p>
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div>
-          <img class="w-24 h-auto mb-4" src="/img/t3.png" >
+          <img class="w-24 h-auto mb-4 mdMax:mb-2" src="/img/t3.png" >
           <div>
             <h3 class="text-2xl text-sky-600 font-serif font-black">Максим Петров</h3>
             <p class="text-sm text-black/40 mb-2">SoftSolutions</p>
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div>
-          <img class="w-24 h-auto mb-4" src="/img/t4.png" >
+          <img class="w-24 h-auto mb-4 mdMax:mb-2" src="/img/t4.png" >
           <div>
             <h3 class="text-2xl text-sky-600 font-serif font-black">Ольга Кузнецова</h3>
             <p class="text-sm text-black/40 mb-2">Диджитал Медиа</p>

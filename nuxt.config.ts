@@ -3,7 +3,6 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
   ssr: false,
   app: {
-    baseURL: '/audit/',
     head: {
       htmlAttrs: { lang: 'ru' },
       link: [
