@@ -18,7 +18,7 @@ const form = ref({
     err: false,
   },
 })
-
+const counter = ref(0)
 const formSubmit = async () => {
   try {
     await $fetch('https://sport-marafon.ru/api/message', {
@@ -27,7 +27,8 @@ const formSubmit = async () => {
         name: form.value.name.val,
         phone: form.value.phone.val,
         message: form.value.message.val
-      }
+      },
+      retry: 0,
     })
   } catch (err) {
     console.error(err)

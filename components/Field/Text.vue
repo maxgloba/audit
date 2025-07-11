@@ -6,59 +6,43 @@ interface IProps {
   label?: string
   invalid?: string | boolean
   required?: boolean
+  validation?: string
   min?: number
   max?: number
-  validation?: 'length' | 'telegram' | 'fio'
+  errTop?: boolean
 }
 
 const props = defineProps<IProps>(),
       uid = useId(),
       model = ref<string>(props.modelValue),
       emit = defineEmits(['update:modelValue', 'valid']),
-      { length, telegram, fio } = useValidation()
+      { length, company } = useValidation()
 
 const update = () => {
-  if (props.validation === 'telegram') {
-    let val = model.value
-
-    val = val.replace(/[^a-zA-Z0-9_@]/g, '')
-
-    if (!val.startsWith('@')) {
-      val = '@' + val.replace(/@/g, '')
-    } else {
-      val = '@' + val.slice(1).replace(/@/g, '')
-    }
-
-    val = val.replace(/__+/g, '_')
-
-    model.value = val
-  } else if (props.validation === 'fio') {
-    let val = model.value
-
-    val = val.replace(/[^А-ЯЁа-яёA-Za-z\s-]/g, '')
-    val = val.replace(/\s+/g, ' ').replace(/-+/g, '-')
-    val = val.replace(/^-|-$/g, '')
-
-    model.value = val
+  if(props.validation){
+    model.value = model.value
+                    .replace(/[^а-яА-Яa-zA-ZñÑ0-9\s\-\–—()#№&_+/]+/gi, "")
+                    .replace(/\n/g, " ")
   } else {
     model.value = model.value
-      .replace(/([^А-ЯЁа-яёa-zA-Z-])/gi, "")
-      .replace(/--+/g, "-")
-      .replace(/\n/g, " ")
+                    .replace(/[^А-ЯЁа-яёa-zA-Z0-9\s\-\–—()#№&_+/]+/gi, "")
+                    .replace(/\n/g, " ")
   }
+
+  model.value = model.value.replace(/^ /, "");
+  model.value = model.value.replace(/ {2,}/g, " ");
 
   emit('update:modelValue', model.value)
 
-  if (props.required) {
-    if (props.validation === 'telegram') {
-      emit('valid', telegram(model.value))
-    } else if (props.validation === 'fio') {
-      emit('valid', fio(model.value))
+  if(props.required){
+    if(props.validation){
+      emit('valid', company(model.value))
     } else {
-      emit('valid', length(model.value, props.min || 1, props.max || 256))
+      emit('valid', length(model.value, props.min, props.max))
     }
   }
 }
+
 
 watch(() => props.modelValue, () => {
   model.value = props.modelValue
@@ -87,7 +71,8 @@ watch(() => props.modelValue, () => {
 
     <div
       v-if="invalid"
-      class="form__error">
+      class="form__error"
+      :class="{'form__error_top': errTop}">
       {{ invalid }}
     </div>
   </div>

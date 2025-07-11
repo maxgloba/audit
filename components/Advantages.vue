@@ -9,7 +9,7 @@ const emit = defineEmits(['modal'])
       <div class="grid grid-cols-2 mdMax:grid-cols-1 gap-4">
         <div class="relative flex items-start gap-4 px-4 py-12 rounded-md bg-yellow-50">
           <div class="min-w-24 mdMax:min-w-16 mdMax:w-16">
-            <img src="/img/a1.png" class="w-full h-auto">
+            <img src="/img/a1.webp" class="w-full h-auto">
           </div>
           <div>
             <h3 class="text-xl font-serif font-bold">Постоянная поддержка клиентов</h3>
@@ -18,7 +18,7 @@ const emit = defineEmits(['modal'])
         </div>
         <div class="relative flex items-start gap-4 px-4 py-12 rounded-md bg-emerald-50">
           <div class="min-w-24 mdMax:min-w-16 mdMax:w-16">
-            <img src="/img/a2.png" class="w-full h-auto">
+            <img src="/img/a2.webp" class="w-full h-auto">
           </div>
           <div>
             <h3 class="text-xl font-serif font-bold">Прозрачное ценообразование</h3>
@@ -27,7 +27,7 @@ const emit = defineEmits(['modal'])
         </div>
         <div class="relative flex items-start gap-4 px-4 py-12 rounded-md bg-sky-50">
           <div class="min-w-24 mdMax:min-w-16 mdMax:w-16">
-            <img src="/img/a3.png" class="w-full h-auto">
+            <img src="/img/a3.webp" class="w-full h-auto">
           </div>
           <div>
             <h3 class="text-xl font-serif font-bold">Использование современных инструментов</h3>
@@ -36,7 +36,7 @@ const emit = defineEmits(['modal'])
         </div>
         <div class="relative flex items-start gap-4 px-4 py-12 rounded-md bg-yellow-50">
           <div class="min-w-24 mdMax:min-w-16 mdMax:w-16">
-            <img src="/img/a4.png" class="w-full h-auto">
+            <img src="/img/a4.webp" class="w-full h-auto">
           </div>
           <div>
             <h3 class="text-xl font-serif font-bold">Гарантия качества</h3>
@@ -45,7 +45,7 @@ const emit = defineEmits(['modal'])
         </div>
         <div class="relative flex gap-4 px-4 py-12 rounded-md bg-emerald-50">
           <div class="min-w-24 mdMax:min-w-16 mdMax:w-16">
-            <img src="/img/a5.png" class="w-full h-auto">
+            <img src="/img/a5.webp" class="w-full h-auto">
           </div>
           <div>
             <h3 class="text-xl font-serif font-bold">Быстрые сроки выполнения</h3>
@@ -54,7 +54,7 @@ const emit = defineEmits(['modal'])
         </div>
         <div class="relative flex gap-4 px-4 py-12 rounded-md bg-sky-50">
           <div class="min-w-24 mdMax:min-w-16 mdMax:w-16">
-            <img src="/img/a6.png" class="w-full h-auto">
+            <img src="/img/a6.webp" class="w-full h-auto">
           </div>
           <div>
             <h3 class="text-xl font-serif font-bold">Индивидуальный подход</h3>

@@ -22,6 +22,8 @@ export default defineNuxtConfig({
       ],
       script: [],
     },
+    // baseURL: '/audit/',
+    buildAssetsDir: '/assets/',
   },
   plugins: ['~/plugins/maska', '~/plugins/fontawesome'],
   modules: [

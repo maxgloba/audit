@@ -17,7 +17,7 @@ const modal = ref<boolean>(false)
     <Header />
     <img
       class="fixed left-0 w-full h-auto -z-10 mdMax:hidden"
-      src="/img/bg-main.jpg"
+      src="/img/bg_main.webp"
       :style="{ top: y * -.5 + 'px' }" >
     <Banner @modal="modal = true" />
     <Services @modal="modal = true" />
