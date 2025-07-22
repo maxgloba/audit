@@ -63,10 +63,10 @@ onClickOutside(header, () => {
         </button>
 
         <div v-if="viewport.isLessThan('md')" class="flex gap-8 pb-12 pt-8">
-          <a href="https://vk.com/marugloba_pm" target="_blank">
+          <a href="https://vk.com/mg_audit" target="_blank">
             <FontAwesomeIcon :icon="['fab', 'vk']" />
           </a>
-          <a href="http://t.me/marugloba_pm" target="_blank">
+          <a href="https://t.me/mg_audit" target="_blank">
             <FontAwesomeIcon :icon="['fab', 'telegram']" />
           </a>
           <a href="mailto:marina.globa.1989@ya.ru" target="_blank">
@@ -74,10 +74,10 @@ onClickOutside(header, () => {
           </a>
         </div>
 
-        <a v-if="viewport.isGreaterThan('md')" href="https://vk.com/marugloba_pm" target="_blank">
+        <a v-if="viewport.isGreaterThan('md')" href="https://vk.com/mg_audit" target="_blank">
           <FontAwesomeIcon :icon="['fab', 'vk']" />
         </a>
-        <a v-if="viewport.isGreaterThan('md')" href="http://t.me/marugloba_pm" target="_blank">
+        <a v-if="viewport.isGreaterThan('md')" href="https://t.me/mg_audit" target="_blank">
           <FontAwesomeIcon :icon="['fab', 'telegram']" />
         </a>
         <a v-if="viewport.isGreaterThan('md')" href="mailto:marina.globa.1989@ya.ru" target="_blank">
