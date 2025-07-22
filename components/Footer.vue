@@ -44,13 +44,13 @@ const goTo = (id: string, offset: number) => {
       <nav class="flex gap-4 text-3xl text-white/70">
         <a
           class="text-2xl hover:text-sky-400"
-          href="https://vk.com/marugloba_pm"
+          href="https://vk.com/mg_audit"
           target="_blank">
           <FontAwesomeIcon :icon="['fab', 'vk']" />
         </a>
         <a
           class="text-2xl hover:text-sky-400"
-          href="http://t.me/marugloba_pm"
+          href="http://t.me/mg_audit"
           target="_blank">
           <FontAwesomeIcon :icon="['fab', 'telegram']" />
         </a>
